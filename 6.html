@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API</title>
+    <style>
+      body {
+        background-color: black;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        margin: 0;
+      }
+      .mui-appbar {
+        background-color: green;
+      }
+      .mui-container {
+        flex: 1;
+        display: flex;
+      }
+      .sidebar {
+        background-color: green;
+        color: white;
+        padding: 20px;
+        min-width: 2px;
+        transition: transform 0.6s;
+      }
+      .sidebar.collapsed {
+        transform: translateX(-730px);
+      }
+      .content {
+        flex: 1;
+        padding: 20px;
+      }
+      .pagination {
+        margin-top: 20px;
+        text-align: center;
+      }
+      .footer {
+        background-color: green;
+        padding: 10px 0;
+        text-align: center;
+      }
+      .bottom-nav {
+        text-align: center;
+        padding: 10px 0;
+        margin-top: auto;
+      }
+      .bottom-nav a {
+        color: white;
+        margin: 0 10px;
+        text-decoration: none;
+      }
+      /* Кнопка Меню*/
+      .mui-btn--raised {
+        background-color: green;
+        color: white;
+        border: none;
+        box-shadow: none;
+      }
+
+      .mui-btn--raised:hover {
+        background-color: darkgreen;
+      }
+
+      .mui-icon-bars {
+        font-family: "Material Icons";
+        font-size: 30px;
+        margin-right: 12px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="mui-appbar">
+      <table width="100%">
+        <tr>
+          <td class="mui--appbar-height">
+            <button
+              id="toggleSidebar"
+              class="mui-btn mui-btn--raised mui-btn--primary mui--appbar-height"
+            >
+              <span class="mui-icon mui-icon-bars"></span>
+              Меню
+            </button>
+          </td>
+          <td class="mui--appbar-height">
+            <a href="#" class="mui--appbar-height mui--text-title">Главная</a>
+          </td>
+          <td class="mui--appbar-height">
+            <a href="#" class="mui--appbar-height mui--text-title">О нас</a>
+          </td>
+          <td class="mui--appbar-height">
+            <a href="#" class="mui--appbar-height mui--text-title">Контакты</a>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="mui-container">
+      <div id="sidebar" class="sidebar">
+        <h2>Меню</h2>
+        <ul>
+          <li><a href="#">API</a></li>
+          <li><a href="#">Сервесы</a></li>
+          <li><a href="#">Полезное</a></li>
+        </ul>
+      </div>
+      <div class="content">
+        <h1>API 06</h1>
+        <p>
+          API (Application Programming Interface) - программный интерфейс,
+          который позволяет взаимодействовать различным программам и сервисам.
+          API определяет набор правил и протоколов, которые позволяют программам
+          обмениваться данными и выполнять определенные действия.
+        </p>
+      </div>
+    </div>
+    <div class="bottom-nav">
+      <a href="index.html">1</a>
+      <a href="2.html">2</a>
+      <a href="3.html">3</a>
+      <a href="4.html">4</a>
+      <a href="5.html">5</a>
+      <a href="6.html">6</a>
+      <a href="7.html">7</a>
+    </div>
+    <div class="footer">&copy; 2023 Белых М.Д</div>
+    <script>
+      document
+        .getElementById("toggleSidebar")
+        .addEventListener("click", function () {
+          var sidebar = document.getElementById("sidebar");
+          sidebar.classList.toggle("collapsed");
+        });
+    </script>
+  </body>
+</html>

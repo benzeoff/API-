@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API</title>
+    <style>
+      body {
+        background-color: #f5f5f5;
+        color: #222;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif; /* Добавляем шрифт */
+      }
+
+      .mui-appbar {
+        background-color: #222;
+        text-align: left;
+        padding: 10px;
+        position: relative;
+        display: flex; /* Центрируем содержимое по вертикали */
+        align-items: center; /* Центрируем содержимое по вертикали */
+      }
+
+      .mui--appbar-height {
+        color: white;
+        margin-right: 10px;
+        display: inline-block;
+        text-decoration: none;
+      }
+
+      .mui-container {
+        flex: 1;
+        display: flex;
+      }
+
+      .sidebar {
+        background-color: #444;
+        color: white;
+        padding: 20px;
+        min-width: 200px; /* Увеличиваем ширину боковой панели */
+        transition: transform 0.6s;
+        text-align: left;
+        height: 100%; /* Заполняем всю доступную высоту */
+        overflow-y: auto; /* Добавляем вертикальную прокрутку, если контент не помещается */
+        box-shadow: 2px 0px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      .sidebar.collapsed {
+        transform: translateX(-350px);
+      }
+
+      .sidebar ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      .sidebar ul li {
+        margin-bottom: 12px;
+      }
+
+      .sidebar ul li a {
+        color: #ecf0f1;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .sidebar ul li a:hover {
+        color: #e74c3c;
+      }
+
+      .sidebar hr {
+        border-top: 1px solid #34495e;
+        margin: 20px 0;
+      }
+
+      .content {
+        flex: 1;
+        padding: 20px; /* Увеличиваем внутренний отступ */
+      }
+
+      .pagination {
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      .footer {
+        background-color: #222;
+        color: white;
+        padding: 10px 0;
+        text-align: center;
+        margin-top: auto; /* Размещаем footer внизу страницы */
+      }
+
+      .bottom-nav {
+        text-align: center;
+        padding: 10px 0;
+      }
+
+      .bottom-nav a {
+        color: #222;
+        margin: 0 15px;
+        text-decoration: none;
+      }
+
+      .mui-btn--raised {
+        background-color: #222;
+        color: white;
+        border: none;
+        box-shadow: none;
+      }
+
+      .mui-btn--raised:hover {
+        background-color: #333;
+      }
+
+      .mui-icon-bars {
+        font-family: "Material Icons";
+        font-size: 20px;
+        margin-right: 10px; /* Уменьшаем отступ */
+      }
+
+      .logo-link {
+        position: absolute;
+        top: 5px; /* Регулируем вертикальное положение */
+        right: 10px; /* Регулируем горизонтальное положение */
+        z-index: 1;
+      }
+
+      .logo-link img {
+        width: 50px;
+        height: auto;
+        z-index: 1;
+      }
+
+      /* Ссылка на изображение в правом верхнем углу */
+      .logo-link img {
+        width: 50px;
+        height: auto;
+        z-index: 1;
+      }
+
+      /*Таблица*/
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-bottom: 20px;
+        margin-top: 20px; /* Добавляем отступ сверху */
+      }
+
+      th,
+      td {
+        border: 1px solid #333;
+        text-align: left;
+        padding: 8px;
+      }
+
+      th {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Ссылка на изображение в правом верхнем углу -->
+    <a
+      href="https://gitlab.linphone.org/uploads/-/system/project/avatar/453/kissclipart-api-icon-png-clipart-computer-icons-application-pr-46d0976647deed9c.png"
+      class="logo-link"
+      target="_blank"
+    >
+      <img
+        src="https://gitlab.linphone.org/uploads/-/system/project/avatar/453/kissclipart-api-icon-png-clipart-computer-icons-application-pr-46d0976647deed9c.png"
+        alt="API Logo"
+      />
+    </a>
+    <div class="mui-appbar">
+      <table width="100%">
+        <tr>
+          <td class="mui--appbar-height">
+            <button
+              id="toggleSidebar"
+              class="mui-btn mui-btn--raised mui-btn--primary mui--appbar-height"
+            >
+              <span class="mui-icon mui-icon-bars"></span>
+              ☰
+            </button>
+          </td>
+          <td class="mui--appbar-height">
+            <a href="index.html" class="mui--appbar-height mui--text-title"
+              >Главная</a
+            >
+          </td>
+          <td class="mui--appbar-height">
+            <a href="contact.html" class="mui--appbar-height mui--text-title"
+              >Контакты</a
+            >
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="mui-container">
+      <div id="sidebar" class="sidebar">
+        <ul>
+          <li><a href="index.html">Что такое API?</a></li>
+          <li><a href="2.html">Роль API в разработке веб-сайтов</a></li>
+          <li><a href="3.html">Авторизация и аутентификация</a></li>
+          <li><a href="4.html">Типы API</a></li>
+          <li><a href="5.html">Сервисы API</a></li>
+        </ul>
+      </div>
+      <div class="content">
+        <h1>Типы API</h1>
+        <p>
+          API представляют разные типы, каждый из которых имеет свои особенности
+          и способы взаимодействия. Вот несколько из них:
+        </p>
+        <table>
+          <tr>
+            <th>Тип API</th>
+            <th>Описание</th>
+            <th>Преимущества</th>
+            <th>Примеры</th>
+          </tr>
+          <tr>
+            <td>RESTful API</td>
+            <td>
+              Основан на архитектурном стиле REST и использует HTTP-методы для
+              операций с ресурсами.
+            </td>
+            <td>Прост в использовании, хорошо масштабируется.</td>
+            <td>Twitter API, Facebook Graph API</td>
+          </tr>
+          <tr>
+            <td>GraphQL</td>
+            <td>
+              Позволяет клиентам запросить только необходимые данные, уменьшая
+              избыточный трафик.
+            </td>
+            <td>Гибкий и эффективный для запроса данных.</td>
+            <td>GitHub GraphQL API, Shopify GraphQL API</td>
+          </tr>
+          <tr>
+            <td>SOAP</td>
+            <td>
+              Протокол для обмена структурированными информационными
+              сообщениями.
+            </td>
+            <td>Поддерживает строгие схемы данных и транзакции.</td>
+            <td>Web Services Security (WS-Security)</td>
+          </tr>
+          <tr>
+            <td>WebSocket</td>
+            <td>
+              Поддерживает полнодуплексное соединение для реального времени и
+              интерактивных приложений.
+            </td>
+            <td>Идеально подходит для чатов, онлайн-игр.</td>
+            <td>Socket.IO, SignalR</td>
+          </tr>
+          <tr>
+            <td>JSON-RPC и XML-RPC</td>
+            <td>
+              Простые протоколы для удаленного вызова процедур на сервере.
+            </td>
+            <td>Легкие и удобные для использования.</td>
+            <td>Bitcoin JSON-RPC, WordPress XML-RPC</td>
+          </tr>
+        </table>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-nav">
+      <a href="index.html">1</a>
+      <a href="2.html">2</a>
+      <a href="3.html">3</a>
+      <a href="4.html">4</a>
+      <a href="5.html">5</a>
+    </div>
+    <div class="footer">
+      &copy; 2023 Белых М.Д
+      <a href="https://github.com/" target="_blank">
+        <img
+          src="https://creazilla-store.fra1.digitaloceanspaces.com/icons/7914417/github-icon-md.png"
+          alt="GitHub Logo"
+          class="github-logo"
+        />
+      </a>
+    </div>
+    <script>
+      document
+        .getElementById("toggleSidebar")
+        .addEventListener("click", function () {
+          var sidebar = document.getElementById("sidebar");
+          sidebar.classList.toggle("collapsed");
+        });
+    </script>
+  </body>
+</html>
